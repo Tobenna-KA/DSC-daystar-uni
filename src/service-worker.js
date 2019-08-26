@@ -2,7 +2,7 @@ self.addEventListener('fetch', function (event) {
     event.respondWith(caches.open('cache').then(function (cache) {
         return cache.match(event.request).then(function (response) {
             console.log("cache request: " + event.request.url);
-            var fetchPromise = fetch(event.request).then(function (networkResponse) {
+            let fetchPromise = fetch(event.request).then(function (networkResponse) {
                 console.log("fetch completed: " + event.request.url, networkResponse);
                 if (networkResponse) {
                     console.debug("updated cached page: " + event.request.url, networkResponse);
